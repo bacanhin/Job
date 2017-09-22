@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+                <!-- menu superior o principal: no hereda de otro menu -->
+        <menuitem id="payroll_control_menu" name="Payroll Control"/>
+
+        <!-- Definimos la accion -->
+
+        <record model="ir.ui.view" id="view_gastos_mensuales_form">
+            <field name="name">Gastos Mensuales</field>
+            <field name="model">gastos.mensuales</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Gastos">
+                    <sheet>
+                        <notebook colspan="4">
+                            <page string="Registrar Datos">
+                                <group>
+                                    <field name='partida' placeholder="000.00.00.00" style="width: 25%%"/>
+                                    <field name='denominacion' style="width: 50%%"/>
+                                    <field name='rubro' style="width: 50%%"/>
+                                </group>
+                                <group col="2">
+                                    <field name='cantidad'/>
+                                    <field name='precio'/>
+                                </group>
+                                <group>
+                                    <field name='is_done'/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form> 
+            </field>
+        </record>
+
+        <!-- </> -->
+
+        <record model="ir.ui.view" id="view_gastos_mensuales_tree">
+            <field name="name">Gastos Mensuales</field>
+            <field name="model">gastos.mensuales</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree color="gray:is_done==True">
+                    <field name='partida'/>
+                    <field name='denominacion'/>
+                    <field name='rubro'/>
+                    <field name='cantidad'/>
+                    <field name='precio'/>
+                </tree>    
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="gastos_mensuales_action">
+            <field name="name">Gastos Mensuales</field>
+            <field name="res_model">gastos.mensuales</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Haz click aquí para agregar el primer rubro
+                </p>
+            </field>
+        </record>
+ 
+        <!-- Definimos un menu de solo vista, este menu tiene como menu padre a Payroll control -->
+        <menuitem id="compras_servicios_menu" name="Compras y Servicios" parent="payroll_control_menu" sequence="5"/>
+
+                <!-- Definimos otro menu que tiene como menu padre a Gastos Mensuales -->
+        <menuitem id="gastos_mensuales" name="Gatos Mensuales" parent="compras_servicios_menu" action="gastos_mensuales_action" sequence="10"/>
+
+        <record model="ir.ui.view" id="view_gastos_nomina_form">
+            <field name="name">Gastos Nomina</field>
+            <field name="model">gastos.nomina</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Nomina">
+                    <sheet>
+                        <group col="2">
+                            <group>
+                                <field name='cargo'/>
+                            </group>
+                            <group>
+                                <field name='cantidad'/>
+                                <field name='monto'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form> 
+            </field>
+        </record>
+
+        <!-- </> -->
+
+        <record model="ir.ui.view" id="view_gastos_nomina_tree">
+            <field name="name">Gastos Nomina</field>
+            <field name="model">gastos.nomina</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree color="gray:is_done==True">
+                    <field name='cargo'/>
+                    <field name='cantidad'/>
+                    <field name='monto'/>
+                </tree>    
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="gastos_nomina_action">
+            <field name="name">Gastos Nomina</field>
+            <field name="res_model">gastos.nomina</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Haz click aquí para agregar pagos de nómina pendientes
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="gastos_nomina_menu" name="Gastos de Nómina" parent="compras_servicios_menu" action="gastos_nomina_action" sequence="10"/>
+
+    </data>
+</openerp>
