@@ -14,6 +14,28 @@
             <field name="arch" type="xml">
                 <form string="Gastos">
                     <sheet>
+                        <group>
+                            <group>
+                                <div class="oe_title">
+                                    <label for="_estado" class="oe_edit_only"/>
+                                    <h1>
+                                        <field name="_estado" class="oe_inline"/>
+                                    </h1>
+                                    <label for="jefe_estado" class="oe_edit_only"/>
+                                    <h3>
+                                        <field name="jefe_estado" class="oe_inline"/>
+                                    </h3>
+                                    <label for="_responsable" class="oe_edit_only"/>
+                                    <h3>
+                                        <field name="_responsable" class="oe_inline"/>
+                                    </h3>
+                                </div>
+                            </group> 
+                            <group col="4">
+                                <label for="cargar_fecha" class="oe_edit_only">
+                                    <field name="cargar_fecha"/>
+                            </group> 
+                        </group> 
                         <notebook colspan="4">
                             <page string="Registrar Datos">
                                 <group>
