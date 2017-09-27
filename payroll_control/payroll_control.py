@@ -9,7 +9,7 @@ class Gastos_Mensuales(osv.osv):
 		'_estado': fields.char('Estado', required=True,),
 		'jefe_estado': fields.char('Jefe de Estado', required=True,),
 		'_responsable': fields.char('Responsable', required=True,),
-		'cargar_fecha': fields.datetime('Fecha de carga',),
+		'cargar_fecha': fields.datetime(),
 		'partida': fields.char('Partida',),
 		'denominacion': fields.char('Denominacion',),
 		'rubro': fields.char('Rubro',),

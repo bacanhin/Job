@@ -33,7 +33,7 @@
                             </group> 
                             <group col="4">
                                 <div class="oe_title">
-                                    <label for="cargar_fecha" string=" " class="oe_edit_only"/>
+                                    <label for="cargar_fecha" string="Fecha de Cargada" class="oe_edit_only"/>
                                         <field name="cargar_fecha"/>
                                 </div>
                             </group> 
